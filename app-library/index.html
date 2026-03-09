@@ -6,27 +6,35 @@
 <title>DomePrograms - Tutte le App</title>
 
 <style>
-body{
+body {
     margin:0;
     font-family:Arial, sans-serif;
     background:#111827;
     color:white;
 }
 
-header{
+/* Header principale */
+header {
     text-align:center;
     padding:40px;
-    font-size:32px;
+    font-size:36px;
     font-weight:bold;
+    color:#fef3c7; /* giallo chiaro */
+    text-shadow: 1px 1px 5px #000;
 }
 
+/* Titoli sezioni */
 .section-header {
     text-align: center;
-    font-size: 24px;
+    font-size: 28px;
+    font-weight: bold;
     margin: 30px 0 20px 0;
+    color: #facc15;
+    text-shadow: 1px 1px 3px #000;
 }
 
-.container{
+/* Container delle card */
+.container {
     display:flex;
     flex-wrap:wrap;
     justify-content:center;
@@ -34,7 +42,8 @@ header{
     padding:0 20px 40px 20px;
 }
 
-.card{
+/* Card App */
+.card {
     background:#1f2937;
     width:220px;
     padding:20px;
@@ -43,46 +52,52 @@ header{
     text-decoration:none;
     color:white;
     transition:0.2s;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
 }
-
-.card:hover{
+.card:hover {
     transform:scale(1.05);
     background:#374151;
+    box-shadow: 0 6px 10px rgba(0,0,0,0.5);
 }
-
-.card h3{
+.card h3 {
     margin-top:0;
 }
-
-.card p{
+.card p {
     font-size:14px;
     color:#cbd5e1;
 }
 
+/* Pulsanti principali */
 .button-main {
     display:block;
     background: #2563eb;
     color: white;
-    padding: 12px 20px;
-    border-radius: 8px;
+    padding: 14px 24px;
+    border-radius: 12px;
     text-decoration: none;
     font-weight: bold;
-    margin: 0 auto 40px auto;
+    margin: 20px auto 40px auto;
     text-align:center;
     width: fit-content;
-    transition: 0.2s;
+    transition: 0.25s;
     cursor: pointer;
     border: none;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    font-size: 16px;
 }
 .button-main:hover {
     background: #1e40af;
+    transform: scale(1.05);
+    box-shadow: 0 6px 10px rgba(0,0,0,0.4);
 }
 
-footer{
+/* Footer */
+footer {
     text-align:center;
     padding:30px;
     font-size:14px;
     color:#9ca3af;
+    margin-top:50px;
 }
 </style>
 </head>
@@ -95,47 +110,45 @@ footer{
 <button class="button-main" onclick="window.location.href='https://demenigeco.github.io/dsapps/app-library/search.html'">🔍 Cerca App</button>
 
 <div class="container">
+    <a class="card" href="https://domenigeco.blogspot.com/2025/12/chart-editor-di-testo-gratis-e.html?m=1">
+        <h3>Chart</h3>
+        <p>Editor di testo Gratis e Minimalista</p>
+    </a>
 
-<a class="card" href="https://domenigeco.blogspot.com/2025/12/chart-editor-di-testo-gratis-e.html?m=1">
-<h3>Chart</h3>
-<p>Editor di testo Gratis e Minimalista</p>
-</a>
+    <a class="card" href="https://domenigeco.blogspot.com/2026/01/domishell.html?m=1">
+        <h3>DomiShell</h3>
+        <p>Shell più leggera di tutte</p>
+    </a>
 
-<a class="card" href="https://domenigeco.blogspot.com/2026/01/domishell.html?m=1">
-<h3>DomiShell</h3>
-<p>Shell più leggera di tutte</p>
-</a>
+    <a class="card" href="https://domenigeco.blogspot.com/2026/01/seven-archiviator-zip-personalizzate.html?m=1">
+        <h3>Seven Archiviator</h3>
+        <p>Zip personalizzate, Archiviazione sicura, No Account, Tutto Gratis</p>
+    </a>
 
-<a class="card" href="https://domenigeco.blogspot.com/2026/01/seven-archiviator-zip-personalizzate.html?m=1">
-<h3>Seven Archiviator</h3>
-<p>Zip personalizzate, Archiviazione sicura, No Account, Tutto Gratis</p>
-</a>
+    <a class="card" href="https://domenigeco.blogspot.com/2026/01/wegame-terminal.html?m=1">
+        <h3>BuildMe</h3>
+        <p>Edita e Modifica in un terminale apposito senza distrazioni</p>
+    </a>
 
-<a class="card" href="https://domenigeco.blogspot.com/2026/01/wegame-terminal.html?m=1">
-<h3>BuildMe</h3>
-<p>Edita e Modifica in un terminale apposito senza distrazioni</p>
-</a>
+    <a class="card" href="https://domenigeco.blogspot.com/2026/01/domi-drivers-for-grafica.html?m=1">
+        <h3>Domi Drivers for Grafica</h3>
+        <p>Driver che MIGLIORANO TUTTO</p>
+    </a>
 
-<a class="card" href="https://domenigeco.blogspot.com/2026/01/domi-drivers-for-grafica.html?m=1">
-<h3>Domi Drivers for Grafica</h3>
-<p>Driver che MIGLIORANO TUTTO</p>
-</a>
+    <a class="card" href="https://domenigeco.blogspot.com/2026/02/pychat.html?m=1">
+        <h3>PyChat</h3>
+        <p>Chat con Bot Personalizzati</p>
+    </a>
 
-<a class="card" href="https://domenigeco.blogspot.com/2026/02/pychat.html?m=1">
-<h3>PyChat</h3>
-<p>Chat con Bot Personalizzati</p>
-</a>
+    <a class="card" href="https://domenigeco.blogspot.com/2026/02/play-lane.html?m=1">
+        <h3>Play Lane</h3>
+        <p>GIOCHI GRATIS</p>
+    </a>
 
-<a class="card" href="https://domenigeco.blogspot.com/2026/02/play-lane.html?m=1">
-<h3>Play Lane</h3>
-<p>GIOCHI GRATIS</p>
-</a>
-
-<a class="card" href="https://demenigeco.github.io/dsapps/app/littledev/">
-<h3>LittleDev</h3>
-<p>Un piccolo editor di testo.</p>
-</a>
-
+    <a class="card" href="https://demenigeco.github.io/dsapps/app/littledev/">
+        <h3>LittleDev</h3>
+        <p>Un piccolo editor di testo.</p>
+    </a>
 </div>
 
 <button class="button-main" onclick="window.location.href='https://demenigeco.github.io/dsapps/'">📚 Torna all'Home App</button>
