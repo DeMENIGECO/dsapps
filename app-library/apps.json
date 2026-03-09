@@ -1,0 +1,50 @@
+[
+    {
+        "name": "Chart",
+        "description": "Editor di testo Gratis e Minimalista",
+        "url": "https://domenigeco.blogspot.com/2025/12/chart-editor-di-testo-gratis-e.html?m=1",
+        "keywords": ["editor", "testo", "gratis", "minimalista"]
+    },
+    {
+        "name": "DomiShell",
+        "description": "Shell più leggera di tutte",
+        "url": "https://domenigeco.blogspot.com/2026/01/domishell.html?m=1",
+        "keywords": ["shell", "leggera", "terminal", "minimalista"]
+    },
+    {
+        "name": "Seven Archiviator",
+        "description": "Zip personalizzate, Archiviazione sicura, No Account, Tutto Gratis",
+        "url": "https://domenigeco.blogspot.com/2026/01/seven-archiviator-zip-personalizzate.html?m=1",
+        "keywords": ["zip", "archiviazione", "sicura", "gratis", "personalizzate"]
+    },
+    {
+        "name": "BuildMe",
+        "description": "Edita e Modifica in un terminale apposito senza distrazioni",
+        "url": "https://domenigeco.blogspot.com/2026/01/wegame-terminal.html?m=1",
+        "keywords": ["editor", "modifica", "terminal", "produttività"]
+    },
+    {
+        "name": "Domi Drivers for Grafica",
+        "description": "Driver che MIGLIORANO TUTTO",
+        "url": "https://domenigeco.blogspot.com/2026/01/domi-drivers-for-grafica.html?m=1",
+        "keywords": ["driver", "grafica", "ottimizzazione", "performance"]
+    },
+    {
+        "name": "PyChat",
+        "description": "Chat con Bot Personalizzati",
+        "url": "https://domenigeco.blogspot.com/2026/02/pychat.html?m=1",
+        "keywords": ["chat", "bot", "personalizzato", "messaggistica"]
+    },
+    {
+        "name": "Play Lane",
+        "description": "GIOCHI GRATIS",
+        "url": "https://domenigeco.blogspot.com/2026/02/play-lane.html?m=1",
+        "keywords": ["giochi", "gratis", "divertimento", "browser"]
+    },
+    {
+        "name": "LittleDev",
+        "description": "Un piccolo editor di testo.",
+        "url": "https://demenigeco.github.io/dsapps/app/littledev/",
+        "keywords": ["editor", "sviluppo", "leggero", "programma"]
+    }
+]
