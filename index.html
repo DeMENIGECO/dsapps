@@ -20,12 +20,18 @@ header{
     font-weight:bold;
 }
 
+.section-header {
+    text-align: center;
+    font-size: 24px;
+    margin: 40px 0 20px 0;
+}
+
 .container{
     display:flex;
     flex-wrap:wrap;
     justify-content:center;
     gap:20px;
-    padding:20px;
+    padding:0 20px 40px 20px;
 }
 
 .card{
@@ -53,6 +59,26 @@ header{
     color:#cbd5e1;
 }
 
+.button-main {
+    display:block;
+    background: #2563eb;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    margin: 0 auto 40px auto;
+    text-align:center;
+    width: fit-content;
+    transition: 0.2s;
+    cursor: pointer;
+    border: none;
+}
+
+.button-main:hover {
+    background: #1e40af;
+}
+
 footer{
     text-align:center;
     padding:30px;
@@ -64,12 +90,14 @@ footer{
 
 <body>
 
-<header>
-DomePrograms
-</header>
+<header>DomePrograms</header>
 
-    <h1>🎇 Esplora App</h1> <button onclick="window.location.href='https://demenigeco.github.io/dsapps/app-library/search.html'">🔍 Cerca App</button>
-    <h1>Del Nostro Team</h1>
+<div class="section-header">
+🎇 Esplora App
+</div>
+<button class="button-main" onclick="window.location.href='https://demenigeco.github.io/dsapps/app-library/search.html'">🔍 Cerca App</button>
+
+<div class="section-header">Del Nostro Team</div>
 <div class="container">
 
 <a class="card" href="https://domenigeco.blogspot.com/2025/12/chart-editor-di-testo-gratis-e.html?m=1">
@@ -114,11 +142,9 @@ DomePrograms
 
 </div>
 
- <button onclick="window.location.href='https://demenigeco.github.io/dsapps/app-library/'">Tutte le app</button>
+<button class="button-main" onclick="window.location.href='https://demenigeco.github.io/dsapps/app-library/'">📚 Tutte le App</button>
 
-<footer>
-DomePrograms
-</footer>
+<footer>DomePrograms</footer>
 
 </body>
 </html>
