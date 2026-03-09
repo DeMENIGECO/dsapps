@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Search Apps - DomePrograms</title>
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #111827;
+    color: white;
+}
+
+header {
+    text-align: center;
+    padding: 30px;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 12px 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    border: none;
+    font-size: 16px;
+}
+
+.result {
+    background: #1f2937;
+    padding: 15px 20px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.result:hover {
+    background: #374151;
+}
+
+.result h3 {
+    margin: 0 0 5px 0;
+}
+
+.result p {
+    margin: 0;
+    font-size: 14px;
+    color: #cbd5e1;
+}
+
+mark {
+    background: #fbbf24;
+    color: black;
+    font-weight: bold;
+}
+</style>
+</head>
+<body>
+
+<header>Cerca App - DomePrograms</header>
+
+<div class="container">
+    <input type="text" id="searchInput" placeholder="Cerca un'app...">
+    <div id="results"></div>
+</div>
+
+<script>
+let apps = [];
+
+// Carica apps.json
+fetch('apps.json')
+.then(resp => resp.json())
+.then(data => { apps = data; displayResults(''); })
+.catch(err => console.error('Errore caricamento apps.json:', err));
+
+const searchInput = document.getElementById('searchInput');
+const resultsDiv = document.getElementById('results');
+
+searchInput.addEventListener('input', () => {
+    displayResults(searchInput.value);
+});
+
+function displayResults(query) {
+    resultsDiv.innerHTML = '';
+    if (!query) return;
+
+    const q = query.toLowerCase();
+
+    apps.forEach(app => {
+        // Controlla se il nome, descrizione o keywords contengono la query
+        let match = false;
+        let highlightedName = app.name;
+        let highlightedDesc = app.description;
+
+        // Evidenzia nel nome
+        if (app.name.toLowerCase().includes(q)) {
+            highlightedName = app.name.replace(new RegExp(`(${q})`, 'gi'), '<mark>$1</mark>');
+            match = true;
+        }
+
+        // Evidenzia nella descrizione
+        if (app.description.toLowerCase().includes(q)) {
+            highlightedDesc = app.description.replace(new RegExp(`(${q})`, 'gi'), '<mark>$1</mark>');
+            match = true;
+        }
+
+        // Evidenzia nelle keywords
+        const keywordsMatches = app.keywords.filter(k => k.toLowerCase().includes(q));
+        if (keywordsMatches.length > 0) match = true;
+
+        if (match) {
+            const div = document.createElement('div');
+            div.className = 'result';
+            div.innerHTML = `<h3>${highlightedName}</h3><p>${highlightedDesc}</p>`;
+            div.addEventListener('click', () => { window.location.href = app.url; });
+            resultsDiv.appendChild(div);
+        }
+    });
+}
+</script>
+
+</body>
+</html>
