@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DomePrograms</title>
+<title>DomePrograms - Tutte le App</title>
 
 <style>
 body{
     margin:0;
-    font-family:Arial;
+    font-family:Arial, sans-serif;
     background:#111827;
     color:white;
 }
@@ -20,12 +20,18 @@ header{
     font-weight:bold;
 }
 
+.section-header {
+    text-align: center;
+    font-size: 24px;
+    margin: 30px 0 20px 0;
+}
+
 .container{
     display:flex;
     flex-wrap:wrap;
     justify-content:center;
     gap:20px;
-    padding:20px;
+    padding:0 20px 40px 20px;
 }
 
 .card{
@@ -53,6 +59,25 @@ header{
     color:#cbd5e1;
 }
 
+.button-main {
+    display:block;
+    background: #2563eb;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    margin: 0 auto 40px auto;
+    text-align:center;
+    width: fit-content;
+    transition: 0.2s;
+    cursor: pointer;
+    border: none;
+}
+.button-main:hover {
+    background: #1e40af;
+}
+
 footer{
     text-align:center;
     padding:30px;
@@ -64,11 +89,11 @@ footer{
 
 <body>
 
-<header>
-DomePrograms
-</header>
+<header>DomePrograms</header>
 
-    <h1>🎇 Tutte le App</h1> <button onclick="window.location.href='https://demenigeco.github.io/dsapps/app-library/search.html'">🔍 Cerca App</button>
+<div class="section-header">🎇 Tutte le App</div>
+<button class="button-main" onclick="window.location.href='https://demenigeco.github.io/dsapps/app-library/search.html'">🔍 Cerca App</button>
+
 <div class="container">
 
 <a class="card" href="https://domenigeco.blogspot.com/2025/12/chart-editor-di-testo-gratis-e.html?m=1">
@@ -78,7 +103,7 @@ DomePrograms
 
 <a class="card" href="https://domenigeco.blogspot.com/2026/01/domishell.html?m=1">
 <h3>DomiShell</h3>
-<p>Shell piú leggera di tutte</p>
+<p>Shell più leggera di tutte</p>
 </a>
 
 <a class="card" href="https://domenigeco.blogspot.com/2026/01/seven-archiviator-zip-personalizzate.html?m=1">
@@ -113,9 +138,9 @@ DomePrograms
 
 </div>
 
-<footer>
-DomePrograms
-</footer>
+<button class="button-main" onclick="window.location.href='https://demenigeco.github.io/dsapps/'">📚 Torna all'Home App</button>
+
+<footer>DomePrograms</footer>
 
 </body>
 </html>
