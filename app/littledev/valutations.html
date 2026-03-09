@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Valutazioni - LittleDev</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #111827;
+    color: white;
+}
+
+header {
+    text-align: center;
+    padding: 30px;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+}
+
+.valutation {
+    background: #1f2937;
+    padding: 15px 20px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.valutation h3 {
+    margin: 0 0 5px 0;
+    color: #fbbf24;
+}
+
+.valutation p {
+    margin: 0;
+    font-size: 14px;
+    color: #cbd5e1;
+}
+
+.button {
+    display: inline-block;
+    background: #2563eb;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    margin: 20px 0;
+    cursor: pointer;
+}
+
+.button:hover {
+    background: #1e40af;
+}
+
+.form-container {
+    display: none;
+    background: #1f2937;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.form-container input, 
+.form-container textarea, 
+.form-container select {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border-radius: 6px;
+    border: none;
+}
+
+</style>
+</head>
+<body>
+
+<header>Valutazioni LittleDev</header>
+
+<div class="container">
+
+    <div id="valutations-list">
+        <!-- Qui verranno mostrate le valutazioni -->
+    </div>
+
+    <button class="button" onclick="showForm()">Valuta</button>
+
+    <div class="form-container" id="form-container">
+        <h3>Nuova Valutazione</h3>
+        <label>Stelle:</label>
+        <select id="stars">
+            <option value="1">⭐</option>
+            <option value="2">⭐⭐</option>
+            <option value="3">⭐⭐⭐</option>
+            <option value="4">⭐⭐⭐⭐</option>
+            <option value="5">⭐⭐⭐⭐⭐</option>
+        </select>
+
+        <label>Titolo:</label>
+        <input type="text" id="title" placeholder="Titolo della valutazione">
+
+        <label>Descrizione:</label>
+        <textarea id="description" rows="4" placeholder="Scrivi la tua recensione"></textarea>
+
+        <button class="button" onclick="sendMail()">Invia Valutazione</button>
+    </div>
+
+</div>
+
+<script>
+// Mostra il form
+function showForm() {
+    document.getElementById('form-container').style.display = 'block';
+}
+
+// Carica le valutazioni dal JSON
+fetch('v.json')
+.then(response => response.json())
+.then(data => {
+    const list = document.getElementById('valutations-list');
+    data.forEach(v => {
+        const div = document.createElement('div');
+        div.className = 'valutation';
+        div.innerHTML = `<h3>${'⭐'.repeat(v.stars)} ${v.title}</h3><p>${v.description}</p>`;
+        list.appendChild(div);
+    });
+})
+.catch(err => {
+    console.error('Errore caricamento v.json', err);
+    document.getElementById('valutations-list').innerHTML = "<p>Nessuna valutazione trovata.</p>";
+});
+
+// Funzione per inviare la mail
+function sendMail() {
+    const stars = document.getElementById('stars').value;
+    const title = encodeURIComponent(document.getElementById('title').value);
+    const desc = encodeURIComponent(document.getElementById('description').value);
+    const body = `Valutazione LittleDev\n\nStelle: ${stars}\nTitolo: ${title}\nDescrizione: ${desc}`;
+
+    window.location.href = `mailto:domenigeco@example.com?subject=Nuova Valutazione LittleDev&body=${body}`;
+}
+</script>
+
+</body>
+</html>
