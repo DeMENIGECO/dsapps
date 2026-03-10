@@ -137,14 +137,22 @@ fetch('v.json')
     document.getElementById('valutations-list').innerHTML = "<p>Nessuna valutazione trovata.</p>";
 });
 
-// Funzione per inviare la mail
 function sendMail() {
     const stars = document.getElementById('stars').value;
-    const title = encodeURIComponent(document.getElementById('title').value);
-    const desc = encodeURIComponent(document.getElementById('description').value);
-    const body = `Valutazione LittleDev\n\nStelle: ${stars}\nTitolo: ${title}\nDescrizione: ${desc}`;
+    const title = document.getElementById('title').value;
+    const desc = document.getElementById('description').value;
 
-    window.location.href = `mailto:domenigecogmail.com?subject=Nuova Valutazione LittleDev&body=${body}`;
+    const bodyText =
+`Valutazione LittleDev
+
+Stelle: ${stars}
+Titolo: ${title}
+Descrizione: ${desc}`;
+
+    const subject = encodeURIComponent("Nuova Valutazione LittleDev");
+    const body = encodeURIComponent(bodyText);
+
+    window.location.href = `mailto:domenigeco@gmail.com?subject=${subject}&body=${body}`;
 }
 </script>
 
