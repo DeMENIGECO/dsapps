@@ -129,25 +129,28 @@ Contribuendo a DomePrograms accetti che il tuo contributo venga distribuito seco
 
 ---
 
-# Pubblicare App
+# Pubblicare un'app
 
-Per pubblicare, usa il nostro [issue template](https://github.com/DeMENIGECO/issues/new/publish-app) icludendo tutti i campi necessari, e lo zip del programma deve includere un file `LICENSE` così:
+Per pubblicare un'app su **DomePrograms**, utilizza il nostro **Issue Template** dedicato, compilando tutti i campi richiesti.
+
+Inoltre, l'archivio ZIP dell'applicazione deve contenere un file `LICENSE` con la seguente struttura:
 
 ```text
 LICENZA - NOME PROGRAMMA
 ================================
 
-[Testo licenza]
+[Testo della licenza]
 
 PRIVACY - NOME PROGRAMMA
 ================================
 
-[Privacy del programma - usa il template di DomePrograms disponibile a https://github.com/DeMENIGECO/dsapps/tree/main/Privacy-versions.md]
+[Informativa sulla privacy del programma.
+Puoi utilizzare il template di DomePrograms disponibile nel file Privacy-versions.md.]
 
 CREDITI - NOME PROGRAMMA
 ================================
 
-[Descrizione breve]
+[Breve descrizione dei crediti]
 
 1. CREDITO 1
 -------------------
@@ -155,11 +158,12 @@ CREDITI - NOME PROGRAMMA
 [Licenza]
 
 2. CREDITO 2
-------------------
+-------------------
 
 [Licenza]
 ```
 
+Nella sezione **CREDITI** devono essere riportate tutte le librerie, le risorse, le icone, i font e gli altri componenti di terze parti utilizzati dall'applicazione, insieme alle rispettive licenze.
 ---
 
 Grazie per contribuire a **DomePrograms**! ❤️
