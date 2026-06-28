@@ -131,7 +131,7 @@ Contribuendo a DomePrograms accetti che il tuo contributo venga distribuito seco
 
 # Pubblicare App
 
-Per pubblicare, usa il nostro [issue template](https://github.com/DeMENIGECO/issues/new/publish-app.yml) icludendo tutti i campi necessari, e lo zip del programma deve includere un file `LICENSE` così:
+Per pubblicare, usa il nostro [issue template](https://github.com/DeMENIGECO/issues/new/publish-app) icludendo tutti i campi necessari, e lo zip del programma deve includere un file `LICENSE` così:
 
 ```text
 LICENZA - NOME PROGRAMMA
