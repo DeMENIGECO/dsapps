@@ -3,6 +3,12 @@
 ## 3
 
 <details>
+  <summary>3.4.3</summary>
+
+  - Aggiunta siti web di alcuni programmi in `ppp`
+</details>
+
+<details>
   <summary>3.4.2</summary>
 
   - Pagina per vedere License e Privacy Programmi
