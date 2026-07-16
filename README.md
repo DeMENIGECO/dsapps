@@ -4,7 +4,7 @@
 [![FAQs](https://img.shields.io/badge/FAQs-❓-yellow)](https://demenigeco.github.io/dsapps/docs/)
 [![Pages](https://github.com/DeMENIGECO/dsapps/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/DeMENIGECO/dsapps/actions/workflows/pages/pages-build-deployment)
 [![Release](
-https://img.shields.io/badge/Release-v3.4.2-green)](https://demenigeco.github.io/dsapps/changelog)
+https://img.shields.io/badge/Release-v3.4.3-green)](https://demenigeco.github.io/dsapps/changelog)
 
 **DomePrograms** è un piccolo "store di app" semplice, carino e facile da usare.  
 Ti permette di esplorare e scaricare app liberamente, con un focus su **semplicità** e **divertimento**.
