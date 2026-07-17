@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: min(600px, 90%);
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 30px;
+            font-weight: normal;
+        }
+
+        form {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 35px;
+        }
+
+        input[type="text"] {
+            flex: 1;
+            padding: 14px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        input[type="text"]:focus {
+            border-color: #4a90e2;
+        }
+
+        button {
+            padding: 14px 20px;
+            border: none;
+            border-radius: 10px;
+            background: #4a90e2;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background: #357abd;
+        }
+
+        .links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .links a {
+            text-decoration: none;
+            background: white;
+            padding: 14px 24px;
+            border-radius: 10px;
+            color: #333;
+            border: 1px solid #ddd;
+            transition: 0.2s;
+        }
+
+        .links a:hover {
+            background: #4a90e2;
+            color: white;
+            border-color: #4a90e2;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Homepage</h1>
+
+    <form action="https://duckduckgo.com/" method="get">
+        <input
+            type="text"
+            name="q"
+            placeholder="Cerca con DuckDuckGo..."
+            autofocus>
+        <button type="submit">Cerca</button>
+    </form>
+
+    <div class="links">
+        <a href="https://duckduckgo.com/" target="_blank">
+            DuckDuckGo
+        </a>
+
+        <a href="https://demenigeco.github.io/dsapps/ppp/catnoir/" target="_blank">
+            NoirCat
+        </a>
+    </div>
+</div>
+
+</body>
+</html>
