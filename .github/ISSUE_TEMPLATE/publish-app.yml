@@ -68,3 +68,12 @@ body:
     attributes:
       label: "Vuoi pubblicare il condice sorgente su dsapps-sources?"
       description: rispondi s o n.
+      placeholder: "s = si, n = no"
+    validations:
+      required: true
+
+  - type: input
+    id: site
+    attributes:
+      label: "Inserisci il link del sito/link zip HTML"
+      description: "Se vuoi, puoi aggiungere un sito. Puoi aggiungere l'url di un sito già esistente o l'url di una zip del sito HTML (Aggiungendo alla fine //zip depo l'url)"
