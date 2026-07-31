@@ -58,7 +58,7 @@ body:
     id: zip_link
     attributes:
       label: Link alla ZIP del programma
-      description: "Inserisci un link diretto al file .zip dell’app (Non compilata)"
+      description: "Inserisci un link diretto al file .zip dell’app. Vedi anxhe i requisiti: https://github.com/DeMENIGECO/dsapps/wiki/Requisiti-per-la-pubblicazione"
       placeholder: https://...
     validations:
       required: true
