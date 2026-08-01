@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Cerca App - DomePrograms</title>
+
+<style>
+body {
+    margin: 0;
+    background: #111827;
+    color: white;
+    font-family: Arial;
+}
+
+.search-box {
+    display: flex;
+    justify-content: center;
+    margin: 50px 20px;
+}
+
+input {
+    width: 400px;
+    max-width: 90%;
+    padding: 15px;
+    border-radius: 10px;
+    border: none;
+    font-size: 16px;
+    background: #1f2937;
+    color: white;
+}
+
+.results {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.result {
+    width: 300px;
+    background: #1f2937;
+    padding: 20px;
+    border-radius: 12px;
+    color: white;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.result:hover {
+    background: #374151;
+    transform: scale(1.03);
+}
+
+.result h3 {
+    margin: 0;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="search-box">
+    <input 
+        id="search"
+        placeholder="🔍 Cerca app..."
+        oninput="searchApps()"
+    >
+</div>
+
+<div class="results" id="results"></div>
+
+
+<script>
+
+let apps = [];
+
+fetch("pro.json")
+.then(response => response.json())
+.then(data => {
+    apps = data;
+});
+
+
+function searchApps(){
+
+    let text = document
+        .getElementById("search")
+        .value
+        .toLowerCase();
+
+    let results = document.getElementById("results");
+
+    results.innerHTML = "";
+
+    if(text === ""){
+        return;
+    }
+
+
+    apps.forEach(app => {
+
+        if(app.name.toLowerCase().includes(text)){
+
+            let link = document.createElement("a");
+
+            link.className = "result";
+
+            link.href = "/dsapps/app/" + app.id;
+
+            link.innerHTML = `
+                <h3>${app.name}</h3>
+            `;
+
+            results.appendChild(link);
+        }
+
+    });
+
+}
+
+</script>
+
+</body>
+</html>
