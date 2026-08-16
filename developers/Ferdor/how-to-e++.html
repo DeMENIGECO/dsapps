@@ -2,233 +2,851 @@
 <html lang="it">
 <head>
 <meta charset="UTF-8">
-<title>Fare Addon per Ferdor</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Fare Addon per Ferdor — DomePrograms Developer</title>
 
 <style>
-body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    max-width: 900px;
-    margin: auto;
-    padding: 20px;
+:root {
+    --bg: #0f172a;
+    --bg-secondary: #111c32;
+    --card: #1e293b;
+    --card-hover: #26354d;
+    --text: #e2e8f0;
+    --muted: #94a3b8;
+    --blue: #3b82f6;
+    --blue-hover: #60a5fa;
+    --green: #22c55e;
+    --border: #334155;
+    --code: #090e18;
 }
 
-h1 { font-size: 28px; }
-h2 { font-size: 22px; }
-h6 { font-size: 14px; margin-top: 20px; }
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    line-height: 1.7;
+}
+
+/* HEADER */
+
+.header {
+    background: rgba(15, 23, 42, 0.95);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(10px);
+}
+
+.header-content {
+    max-width: 1000px;
+    margin: auto;
+    padding: 14px 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.brand {
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+}
+
+.brand span {
+    color: var(--blue);
+}
+
+.back-btn {
+    text-decoration: none;
+    color: var(--text);
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 8px 13px;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+.back-btn:hover {
+    background: var(--card-hover);
+    border-color: var(--blue);
+    color: white;
+}
+
+/* MAIN */
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 45px 20px 60px;
+}
+
+/* HERO */
+
+.hero {
+    margin-bottom: 35px;
+}
+
+.badge {
+    display: inline-block;
+    background: rgba(59, 130, 246, 0.12);
+    color: var(--blue-hover);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    padding: 5px 10px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+
+h1 {
+    font-size: clamp(30px, 5vw, 46px);
+    line-height: 1.15;
+    margin: 0 0 15px;
+    color: white;
+}
+
+.subtitle {
+    color: var(--muted);
+    font-size: 17px;
+    max-width: 700px;
+}
+
+/* INFO BOX */
+
+.info {
+    background: linear-gradient(
+        135deg,
+        rgba(59, 130, 246, 0.12),
+        rgba(34, 197, 94, 0.06)
+    );
+
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    border-left: 4px solid var(--blue);
+    border-radius: 12px;
+
+    padding: 18px 20px;
+    margin: 25px 0 35px;
+}
+
+.info strong {
+    color: white;
+}
+
+/* CONTENT CARD */
+
+.section {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 25px;
+    margin-bottom: 25px;
+}
+
+h2 {
+    color: white;
+    font-size: 25px;
+    margin-top: 0;
+}
+
+h3 {
+    color: white;
+    font-size: 19px;
+    margin-top: 30px;
+}
+
+p {
+    color: #cbd5e1;
+}
+
+ul {
+    color: #cbd5e1;
+}
+
+li {
+    margin: 7px 0;
+}
+
+/* INLINE CODE */
+
+code {
+    background: #0b1220;
+    color: #93c5fd;
+    border: 1px solid #263449;
+    padding: 2px 6px;
+    border-radius: 5px;
+    font-family: Consolas, Monaco, monospace;
+    font-size: 0.92em;
+}
+
+/* CODE BLOCK */
+
+.code-wrapper {
+    position: relative;
+    margin: 15px 0 25px;
+}
+
+.code-label {
+    position: absolute;
+    top: 10px;
+    left: 13px;
+
+    color: var(--muted);
+    font-size: 11px;
+    font-family: monospace;
+    text-transform: uppercase;
+}
 
 pre {
-    background: #1e1e1e;
-    color: #fff;
-    padding: 15px;
+    background: var(--code);
+    color: #e5e7eb;
+
+    border: 1px solid #1f2b3d;
+    border-radius: 12px;
+
+    padding: 45px 18px 18px;
+    margin: 0;
+
     overflow-x: auto;
-    border-radius: 8px;
-    position: relative;
+
+    font-family: Consolas, Monaco, "Courier New", monospace;
+    font-size: 14px;
+    line-height: 1.6;
 }
 
 .copy-btn {
     position: absolute;
-    top: 10px;
-    right: 10px;
-    background: #4CAF50;
-    border: none;
-    color: white;
-    padding: 5px 10px;
+    top: 8px;
+    right: 8px;
+
+    background: #1e293b;
+    border: 1px solid #334155;
+
+    color: #cbd5e1;
+
+    padding: 6px 10px;
+    border-radius: 7px;
+
     cursor: pointer;
-    border-radius: 5px;
     font-size: 12px;
-    user-select: none;
+
+    transition: 0.2s;
 }
 
 .copy-btn:hover {
-    background: #45a049;
+    background: var(--blue);
+    border-color: var(--blue);
+    color: white;
 }
 
-code {
-    background: #eee;
-    padding: 2px 5px;
-    border-radius: 4px;
+.copy-btn.copied {
+    background: var(--green);
+    border-color: var(--green);
+    color: white;
 }
 
-blockquote {
-    background: #f5f5f5;
-    padding: 10px;
-    border-left: 5px solid #ccc;
+/* LINK */
+
+.doc-link {
+    display: inline-block;
+
+    color: var(--blue-hover);
+    text-decoration: none;
+
+    background: rgba(59, 130, 246, 0.08);
+    border: 1px solid rgba(59, 130, 246, 0.25);
+
+    padding: 10px 14px;
+    border-radius: 8px;
+
+    transition: 0.2s;
+}
+
+.doc-link:hover {
+    background: var(--blue);
+    color: white;
+}
+
+/* EXAMPLE */
+
+.example {
+    margin-top: 30px;
+}
+
+.example-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.number {
+    display: inline-flex;
+
+    width: 28px;
+    height: 28px;
+
+    align-items: center;
+    justify-content: center;
+
+    background: var(--blue);
+    color: white;
+
+    border-radius: 50%;
+
+    font-size: 13px;
+    font-weight: bold;
+}
+
+/* FOOTER */
+
+footer {
+    border-top: 1px solid var(--border);
+    text-align: center;
+
+    padding: 25px 20px;
+
+    color: var(--muted);
+    font-size: 13px;
+}
+
+footer strong {
+    color: var(--text);
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    .header-content {
+        padding: 12px 15px;
+    }
+
+    .brand {
+        font-size: 15px;
+    }
+
+    .back-btn {
+        font-size: 12px;
+        padding: 7px 9px;
+    }
+
+    .container {
+        padding: 30px 14px 45px;
+    }
+
+    .section {
+        padding: 18px;
+        border-radius: 13px;
+    }
+
+    h1 {
+        font-size: 31px;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+
+    pre {
+        font-size: 12px;
+    }
+
+    .subtitle {
+        font-size: 15px;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<h1>Fare Addon per Ferdor e Ferdor Beta</h1>
+<header class="header">
+    <div class="header-content">
 
-<blockquote>Questa FAQ è dedicata a sviluppatori di addons.</blockquote>
+        <div class="brand">
+            DomePrograms <span>For Developer</span>
+        </div>
 
-<p><strong>Ecco come Fare Addons per Ferdor e Ferdor Beta.</strong></p>
+        <a class="back-btn" href="/dsapps/developers/">
+            ← Contenuti
+        </a>
 
-<h2>Guida E++</h2>
+    </div>
+</header>
 
-<blockquote>E++ è un linguaggio avanzato per addon Ferdor.</blockquote>
 
-<p>
-E++ viene usato in file <code>ADDON-EPP</code> per creare logiche avanzate:
-</p>
+<main class="container">
 
-<ul>
-<li>Automazioni</li>
-<li>Moduli</li>
-<li>Eventi</li>
-<li>Controllo interno</li>
-</ul>
+    <section class="hero">
 
-<p>
-<a href="how-to-plu.html">
-<strong>Guarda anche: Fare Addon per Ferdor e Ferdor Beta</strong>
-</a>
-</p>
+        <div class="badge">
+            FERDOR DEVELOPER
+        </div>
 
-<h6>Struttura base</h6>
+        <h1>Fare Addon per Ferdor e Ferdor Beta</h1>
 
-<pre><button class="copy-btn">Copia</button>
-\ E++ File.Name "base"
+        <p class="subtitle">
+            Guida per sviluppatori per creare addon, utilizzare E++ 
+            e aggiungere logiche avanzate a Ferdor.
+        </p>
+
+    </section>
+
+
+    <div class="info">
+        <strong>📘 Guida per sviluppatori</strong><br>
+        Questa guida è dedicata agli sviluppatori che vogliono
+        creare addon per <strong>Ferdor</strong> e <strong>Ferdor Beta</strong>.
+    </div>
+
+
+    <section class="section">
+
+        <h2>🧩 Introduzione</h2>
+
+        <p>
+            Gli addon permettono di estendere le funzionalità di Ferdor
+            aggiungendo nuove funzioni, automazioni e comportamenti.
+        </p>
+
+        <p>
+            Per creare logiche più avanzate puoi utilizzare
+            <strong>E++</strong>, il linguaggio utilizzato dagli addon
+            Ferdor.
+        </p>
+
+    </section>
+
+
+    <section class="section">
+
+        <h2>⚡ Guida E++</h2>
+
+        <p>
+            <strong>E++</strong> è un linguaggio avanzato pensato
+            per gli addon di Ferdor.
+        </p>
+
+        <p>
+            I file E++ utilizzano l'estensione:
+            <code>ADDON-EPP</code>
+        </p>
+
+        <p>Con E++ puoi creare:</p>
+
+        <ul>
+            <li>⚙️ Automazioni</li>
+            <li>📦 Moduli</li>
+            <li>⚡ Eventi</li>
+            <li>🧠 Logiche interne</li>
+            <li>📁 Gestione dei file</li>
+            <li>🐞 Debug</li>
+        </ul>
+
+        <p>
+            <a class="doc-link" href="how-to-e++.html">
+                📖 Guarda anche: Come programmare in E++
+            </a>
+        </p>
+
+    </section>
+
+
+    <section class="section">
+
+        <h2>🏗️ Struttura base</h2>
+
+        <p>
+            Un file E++ può partire da una struttura simile a questa:
+        </p>
+
+        <div class="code-wrapper">
+
+            <span class="code-label">E++</span>
+
+            <button class="copy-btn">
+                Copia
+            </button>
+
+<pre>\ E++ File.Name "base"
 \ File includemdl &lt;basestudio&gt;, &lt;eppinit&gt;
 
-&lt;eppinit&gt;.InitMdl[this]
-</pre>
+&lt;eppinit&gt;.InitMdl[this]</pre>
 
-<h2>Esempi</h2>
+        </div>
 
-<h6>Esempio 1</h6>
-<pre><button class="copy-btn">Copia</button>
-\ E++ File.Name "hello"
+    </section>
+
+
+    <section class="section">
+
+        <h2>💻 Esempi</h2>
+
+        <!-- 1 -->
+
+        <div class="example">
+
+            <h3 class="example-title">
+                <span class="number">1</span>
+                Hello World
+            </h3>
+
+            <div class="code-wrapper">
+
+                <span class="code-label">E++</span>
+
+                <button class="copy-btn">Copia</button>
+
+<pre>\ E++ File.Name "hello"
 \ File includemdl &lt;basestudio&gt;, &lt;eppinit&gt;
 
 print "Hello"
 
-&lt;eppinit&gt;.InitMdl[this]
-</pre>
+&lt;eppinit&gt;.InitMdl[this]</pre>
 
-<h6>Esempio 2</h6>
-<pre><button class="copy-btn">Copia</button>
-\ E++ File.Name "math"
+            </div>
+
+        </div>
+
+
+        <!-- 2 -->
+
+        <div class="example">
+
+            <h3 class="example-title">
+                <span class="number">2</span>
+                Operazioni matematiche
+            </h3>
+
+            <div class="code-wrapper">
+
+                <span class="code-label">E++</span>
+
+                <button class="copy-btn">Copia</button>
+
+<pre>\ E++ File.Name "math"
 \ File includemdl &lt;basestudio&gt;, &lt;eppinit&gt;
 
 var a = 5
 var b = 3
+
 print a + b
 
-&lt;eppinit&gt;.InitMdl[this]
-</pre>
+&lt;eppinit&gt;.InitMdl[this]</pre>
 
-<h6>Esempio 3</h6>
-<pre><button class="copy-btn">Copia</button>
-\ E++ File.Name "if"
+            </div>
+
+        </div>
+
+
+        <!-- 3 -->
+
+        <div class="example">
+
+            <h3 class="example-title">
+                <span class="number">3</span>
+                Condizioni
+            </h3>
+
+            <div class="code-wrapper">
+
+                <span class="code-label">E++</span>
+
+                <button class="copy-btn">Copia</button>
+
+<pre>\ E++ File.Name "if"
 \ File includemdl &lt;basestudio&gt;, &lt;eppinit&gt;
 
 if 1 == 1 {
- print "ok"
+    print "ok"
 }
 
-&lt;eppinit&gt;.InitMdl[this]
-</pre>
+&lt;eppinit&gt;.InitMdl[this]</pre>
 
-<h6>Esempio 4</h6>
-<pre><button class="copy-btn">Copia</button>
-\ E++ File.Name "loop"
+            </div>
+
+        </div>
+
+
+        <!-- 4 -->
+
+        <div class="example">
+
+            <h3 class="example-title">
+                <span class="number">4</span>
+                Cicli
+            </h3>
+
+            <div class="code-wrapper">
+
+                <span class="code-label">E++</span>
+
+                <button class="copy-btn">Copia</button>
+
+<pre>\ E++ File.Name "loop"
 \ File includemdl &lt;basestudio&gt;, &lt;eppinit&gt;
 
 for i in 0..3 {
- print i
+    print i
 }
 
-&lt;eppinit&gt;.InitMdl[this]
-</pre>
+&lt;eppinit&gt;.InitMdl[this]</pre>
 
-<h6>Esempio 5</h6>
-<pre><button class="copy-btn">Copia</button>
-\ E++ File.Name "func"
+            </div>
+
+        </div>
+
+
+        <!-- 5 -->
+
+        <div class="example">
+
+            <h3 class="example-title">
+                <span class="number">5</span>
+                Funzioni
+            </h3>
+
+            <div class="code-wrapper">
+
+                <span class="code-label">E++</span>
+
+                <button class="copy-btn">Copia</button>
+
+<pre>\ E++ File.Name "func"
 \ File includemdl &lt;basestudio&gt;, &lt;eppinit&gt;
 
 func hi(n) {
- print n
+    print n
 }
 
 hi("Dev")
 
-&lt;eppinit&gt;.InitMdl[this]
-</pre>
+&lt;eppinit&gt;.InitMdl[this]</pre>
 
-<h6>Esempio 6</h6>
-<pre><button class="copy-btn">Copia</button>
-\ E++ File.Name "file"
+            </div>
+
+        </div>
+
+
+        <!-- 6 -->
+
+        <div class="example">
+
+            <h3 class="example-title">
+                <span class="number">6</span>
+                File
+            </h3>
+
+            <div class="code-wrapper">
+
+                <span class="code-label">E++</span>
+
+                <button class="copy-btn">Copia</button>
+
+<pre>\ E++ File.Name "file"
 \ File includemdl &lt;basestudio&gt;, &lt;eppinit&gt;
 
 file.create "a.txt"
 
-&lt;eppinit&gt;.InitMdl[this]
-</pre>
+&lt;eppinit&gt;.InitMdl[this]</pre>
 
-<h6>Esempio 7</h6>
-<pre><button class="copy-btn">Copia</button>
-\ E++ File.Name "event"
+            </div>
+
+        </div>
+
+
+        <!-- 7 -->
+
+        <div class="example">
+
+            <h3 class="example-title">
+                <span class="number">7</span>
+                Eventi
+            </h3>
+
+            <div class="code-wrapper">
+
+                <span class="code-label">E++</span>
+
+                <button class="copy-btn">Copia</button>
+
+<pre>\ E++ File.Name "event"
 \ File includemdl &lt;basestudio&gt;, &lt;eppinit&gt;
 
 event.start {
- print "start"
+    print "start"
 }
 
-&lt;eppinit&gt;.InitMdl[this]
-</pre>
+&lt;eppinit&gt;.InitMdl[this]</pre>
 
-<h6>Esempio 8</h6>
-<pre><button class="copy-btn">Copia</button>
-\ E++ File.Name "module"
+            </div>
+
+        </div>
+
+
+        <!-- 8 -->
+
+        <div class="example">
+
+            <h3 class="example-title">
+                <span class="number">8</span>
+                Moduli
+            </h3>
+
+            <div class="code-wrapper">
+
+                <span class="code-label">E++</span>
+
+                <button class="copy-btn">Copia</button>
+
+<pre>\ E++ File.Name "module"
 \ File includemdl &lt;basestudio&gt;, &lt;eppinit&gt;
 
 module.load "core"
 
-&lt;eppinit&gt;.InitMdl[this]
-</pre>
+&lt;eppinit&gt;.InitMdl[this]</pre>
 
-<h6>Esempio 9</h6>
-<pre><button class="copy-btn">Copia</button>
-\ E++ File.Name "input"
+            </div>
+
+        </div>
+
+
+        <!-- 9 -->
+
+        <div class="example">
+
+            <h3 class="example-title">
+                <span class="number">9</span>
+                Input
+            </h3>
+
+            <div class="code-wrapper">
+
+                <span class="code-label">E++</span>
+
+                <button class="copy-btn">Copia</button>
+
+<pre>\ E++ File.Name "input"
 \ File includemdl &lt;basestudio&gt;, &lt;eppinit&gt;
 
 var x = input "nome"
+
 print x
 
-&lt;eppinit&gt;.InitMdl[this]
-</pre>
+&lt;eppinit&gt;.InitMdl[this]</pre>
 
-<h6>Esempio 10</h6>
-<pre><button class="copy-btn">Copia</button>
-\ E++ File.Name "debug"
+            </div>
+
+        </div>
+
+
+        <!-- 10 -->
+
+        <div class="example">
+
+            <h3 class="example-title">
+                <span class="number">10</span>
+                Debug
+            </h3>
+
+            <div class="code-wrapper">
+
+                <span class="code-label">E++</span>
+
+                <button class="copy-btn">Copia</button>
+
+<pre>\ E++ File.Name "debug"
 \ File includemdl &lt;basestudio&gt;, &lt;eppinit&gt;
 
 debug.log "ok"
 
-&lt;eppinit&gt;.InitMdl[this]
-</pre>
+&lt;eppinit&gt;.InitMdl[this]</pre>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <h2>🚀 Prossimi passi</h2>
+
+        <p>
+            Ora che conosci la struttura di base di E++, puoi
+            approfondire la creazione degli addon e imparare a
+            utilizzare le funzionalità avanzate di Ferdor.
+        </p>
+
+        <a class="doc-link" href="/dsapps/developers/Ferdor/how-to-plu">
+            🧩 Guida completa agli Addon
+        </a>
+
+    </section>
+
+</main>
+
+
+<footer>
+    <strong>DomePrograms For Developer</strong>
+    <br>
+    Documentazione per sviluppatori Ferdor
+</footer>
+
 
 <script>
-document.addEventListener("DOMContentLoaded", () => {
-    document.querySelectorAll(".copy-btn").forEach(button => {
-        button.addEventListener("click", () => {
 
-            const pre = button.parentElement;
-            const clone = pre.cloneNode(true);
-            clone.querySelector("button").remove();
+document.querySelectorAll(".copy-btn").forEach(button => {
 
-            const code = clone.innerText.trim();
+    button.addEventListener("click", async () => {
 
-            navigator.clipboard.writeText(code);
+        const wrapper = button.closest(".code-wrapper");
+        const code = wrapper.querySelector("pre").innerText.trim();
 
-            button.innerText = "Copiato!";
-            setTimeout(() => button.innerText = "Copia", 2000);
-        });
+        try {
+
+            await navigator.clipboard.writeText(code);
+
+            const oldText = button.innerText;
+
+            button.innerText = "✓ Copiato!";
+            button.classList.add("copied");
+
+            setTimeout(() => {
+
+                button.innerText = oldText;
+                button.classList.remove("copied");
+
+            }, 1800);
+
+        } catch (error) {
+
+            button.innerText = "Errore";
+
+            setTimeout(() => {
+                button.innerText = "Copia";
+            }, 1800);
+
+        }
+
     });
+
 });
+
 </script>
 
 </body>
