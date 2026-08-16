@@ -9,16 +9,17 @@
 <style>
 :root {
     --bg: #0f172a;
-    --bg-secondary: #111c32;
     --card: #1e293b;
     --card-hover: #26354d;
     --text: #e2e8f0;
     --muted: #94a3b8;
     --blue: #3b82f6;
-    --blue-hover: #60a5fa;
+    --blue-light: #60a5fa;
     --green: #22c55e;
+    --green-dark: #16a34a;
     --border: #334155;
-    --code: #090e18;
+    --code: #080d16;
+    --warning: #f59e0b;
 }
 
 * {
@@ -30,28 +31,30 @@ html {
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
     background: var(--bg);
     color: var(--text);
-    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
     line-height: 1.7;
 }
 
 /* HEADER */
 
 .header {
-    background: rgba(15, 23, 42, 0.95);
-    border-bottom: 1px solid var(--border);
     position: sticky;
     top: 0;
     z-index: 100;
-    backdrop-filter: blur(10px);
+
+    background: rgba(15, 23, 42, 0.92);
+    backdrop-filter: blur(12px);
+
+    border-bottom: 1px solid var(--border);
 }
 
 .header-content {
     max-width: 1000px;
     margin: auto;
-    padding: 14px 20px;
+    padding: 13px 20px;
 
     display: flex;
     align-items: center;
@@ -60,28 +63,32 @@ body {
 }
 
 .brand {
+    color: white;
     font-size: 18px;
     font-weight: bold;
-    color: white;
 }
 
 .brand span {
-    color: var(--blue);
+    color: var(--blue-light);
 }
 
-.back-btn {
+.back-button {
     text-decoration: none;
     color: var(--text);
+
     background: var(--card);
     border: 1px solid var(--border);
-    padding: 8px 13px;
+
+    padding: 7px 12px;
     border-radius: 8px;
-    font-size: 14px;
+
+    font-size: 13px;
+
     transition: 0.2s;
 }
 
-.back-btn:hover {
-    background: var(--card-hover);
+.back-button:hover {
+    background: var(--blue);
     border-color: var(--blue);
     color: white;
 }
@@ -90,8 +97,8 @@ body {
 
 .container {
     max-width: 1000px;
-    margin: 0 auto;
-    padding: 45px 20px 60px;
+    margin: auto;
+    padding: 45px 20px 70px;
 }
 
 /* HERO */
@@ -102,56 +109,68 @@ body {
 
 .badge {
     display: inline-block;
-    background: rgba(59, 130, 246, 0.12);
-    color: var(--blue-hover);
-    border: 1px solid rgba(59, 130, 246, 0.3);
-    padding: 5px 10px;
-    border-radius: 999px;
-    font-size: 13px;
-    font-weight: bold;
+
+    padding: 5px 11px;
     margin-bottom: 12px;
+
+    border-radius: 999px;
+
+    background: rgba(59, 130, 246, 0.12);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+
+    color: var(--blue-light);
+
+    font-size: 12px;
+    font-weight: bold;
 }
 
 h1 {
+    color: white;
+
     font-size: clamp(30px, 5vw, 46px);
     line-height: 1.15;
-    margin: 0 0 15px;
-    color: white;
+
+    margin: 0 0 14px;
 }
 
 .subtitle {
+    max-width: 720px;
+
     color: var(--muted);
     font-size: 17px;
-    max-width: 700px;
 }
 
-/* INFO BOX */
+/* INFO */
 
 .info {
-    background: linear-gradient(
-        135deg,
-        rgba(59, 130, 246, 0.12),
-        rgba(34, 197, 94, 0.06)
-    );
+    margin-bottom: 30px;
+    padding: 18px 20px;
+
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(59, 130, 246, 0.12),
+            rgba(34, 197, 94, 0.05)
+        );
 
     border: 1px solid rgba(59, 130, 246, 0.3);
     border-left: 4px solid var(--blue);
-    border-radius: 12px;
-
-    padding: 18px 20px;
-    margin: 25px 0 35px;
 }
 
 .info strong {
     color: white;
 }
 
-/* CONTENT CARD */
+/* CARD */
 
 .section {
     background: var(--card);
     border: 1px solid var(--border);
+
     border-radius: 16px;
+
     padding: 25px;
     margin-bottom: 25px;
 }
@@ -159,13 +178,16 @@ h1 {
 h2 {
     color: white;
     font-size: 25px;
+
     margin-top: 0;
+    margin-bottom: 20px;
 }
 
 h3 {
     color: white;
     font-size: 19px;
-    margin-top: 30px;
+
+    margin-top: 0;
 }
 
 p {
@@ -180,126 +202,35 @@ li {
     margin: 7px 0;
 }
 
-/* INLINE CODE */
+/* STEP */
 
-code {
-    background: #0b1220;
-    color: #93c5fd;
-    border: 1px solid #263449;
-    padding: 2px 6px;
-    border-radius: 5px;
-    font-family: Consolas, Monaco, monospace;
-    font-size: 0.92em;
-}
-
-/* CODE BLOCK */
-
-.code-wrapper {
-    position: relative;
-    margin: 15px 0 25px;
-}
-
-.code-label {
-    position: absolute;
-    top: 10px;
-    left: 13px;
-
-    color: var(--muted);
-    font-size: 11px;
-    font-family: monospace;
-    text-transform: uppercase;
-}
-
-pre {
-    background: var(--code);
-    color: #e5e7eb;
-
-    border: 1px solid #1f2b3d;
-    border-radius: 12px;
-
-    padding: 45px 18px 18px;
-    margin: 0;
-
-    overflow-x: auto;
-
-    font-family: Consolas, Monaco, "Courier New", monospace;
-    font-size: 14px;
-    line-height: 1.6;
-}
-
-.copy-btn {
-    position: absolute;
-    top: 8px;
-    right: 8px;
-
-    background: #1e293b;
-    border: 1px solid #334155;
-
-    color: #cbd5e1;
-
-    padding: 6px 10px;
-    border-radius: 7px;
-
-    cursor: pointer;
-    font-size: 12px;
-
-    transition: 0.2s;
-}
-
-.copy-btn:hover {
-    background: var(--blue);
-    border-color: var(--blue);
-    color: white;
-}
-
-.copy-btn.copied {
-    background: var(--green);
-    border-color: var(--green);
-    color: white;
-}
-
-/* LINK */
-
-.doc-link {
-    display: inline-block;
-
-    color: var(--blue-hover);
-    text-decoration: none;
-
-    background: rgba(59, 130, 246, 0.08);
-    border: 1px solid rgba(59, 130, 246, 0.25);
-
-    padding: 10px 14px;
-    border-radius: 8px;
-
-    transition: 0.2s;
-}
-
-.doc-link:hover {
-    background: var(--blue);
-    color: white;
-}
-
-/* EXAMPLE */
-
-.example {
+.step {
     margin-top: 30px;
+    padding-top: 25px;
+
+    border-top: 1px solid var(--border);
 }
 
-.example-title {
+.step:first-of-type {
+    border-top: 0;
+    padding-top: 0;
+}
+
+.step-title {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 11px;
 }
 
-.number {
+.step-number {
+    width: 30px;
+    height: 30px;
+
     display: inline-flex;
-
-    width: 28px;
-    height: 28px;
-
     align-items: center;
     justify-content: center;
+
+    flex-shrink: 0;
 
     background: var(--blue);
     color: white;
@@ -310,15 +241,173 @@ pre {
     font-weight: bold;
 }
 
+/* CODE */
+
+code {
+    background: #0b1220;
+
+    color: #93c5fd;
+
+    border: 1px solid #263449;
+
+    padding: 2px 6px;
+
+    border-radius: 5px;
+
+    font-family:
+        Consolas,
+        Monaco,
+        "Courier New",
+        monospace;
+
+    font-size: 0.92em;
+}
+
+.code-wrapper {
+    position: relative;
+    margin: 16px 0 20px;
+}
+
+.code-label {
+    position: absolute;
+
+    top: 10px;
+    left: 14px;
+
+    color: var(--muted);
+
+    font-family: monospace;
+    font-size: 11px;
+
+    text-transform: uppercase;
+}
+
+pre {
+    margin: 0;
+
+    padding: 43px 18px 18px;
+
+    background: var(--code);
+
+    border: 1px solid #1f2b3d;
+    border-radius: 12px;
+
+    color: #e5e7eb;
+
+    overflow-x: auto;
+
+    font-family:
+        Consolas,
+        Monaco,
+        "Courier New",
+        monospace;
+
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.copy-btn {
+    position: absolute;
+
+    top: 8px;
+    right: 8px;
+
+    background: #1e293b;
+    color: #cbd5e1;
+
+    border: 1px solid #334155;
+
+    padding: 6px 10px;
+
+    border-radius: 7px;
+
+    cursor: pointer;
+
+    font-size: 12px;
+
+    transition: 0.2s;
+}
+
+.copy-btn:hover {
+    background: var(--blue);
+    border-color: var(--blue);
+
+    color: white;
+}
+
+.copy-btn.copied {
+    background: var(--green);
+    border-color: var(--green);
+
+    color: white;
+}
+
+/* DOWNLOAD / SEND */
+
+.send-card {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(34, 197, 94, 0.10),
+            rgba(59, 130, 246, 0.08)
+        );
+
+    border-color: rgba(34, 197, 94, 0.25);
+}
+
+.send-button {
+    display: inline-block;
+
+    margin-top: 10px;
+
+    padding: 11px 16px;
+
+    border-radius: 9px;
+
+    background: var(--green);
+    color: white;
+
+    text-decoration: none;
+    font-weight: bold;
+
+    transition: 0.2s;
+}
+
+.send-button:hover {
+    background: var(--green-dark);
+    transform: translateY(-1px);
+}
+
+/* WARNING */
+
+.warning {
+    margin-top: 20px;
+
+    padding: 14px 16px;
+
+    background: rgba(245, 158, 11, 0.08);
+
+    border: 1px solid rgba(245, 158, 11, 0.25);
+    border-left: 4px solid var(--warning);
+
+    border-radius: 9px;
+}
+
+.warning strong {
+    color: #fbbf24;
+}
+
 /* FOOTER */
 
 footer {
-    border-top: 1px solid var(--border);
-    text-align: center;
-
     padding: 25px 20px;
 
+    border-top: 1px solid var(--border);
+
+    text-align: center;
+
     color: var(--muted);
+
     font-size: 13px;
 }
 
@@ -331,20 +420,20 @@ footer strong {
 @media (max-width: 600px) {
 
     .header-content {
-        padding: 12px 15px;
+        padding: 11px 14px;
     }
 
     .brand {
-        font-size: 15px;
+        font-size: 14px;
     }
 
-    .back-btn {
-        font-size: 12px;
-        padding: 7px 9px;
+    .back-button {
+        font-size: 11px;
+        padding: 6px 9px;
     }
 
     .container {
-        padding: 30px 14px 45px;
+        padding: 30px 14px 50px;
     }
 
     .section {
@@ -360,12 +449,16 @@ footer strong {
         font-size: 22px;
     }
 
-    pre {
-        font-size: 12px;
-    }
-
     .subtitle {
         font-size: 15px;
+    }
+
+    pre {
+        font-size: 11px;
+    }
+
+    .copy-btn {
+        font-size: 11px;
     }
 }
 </style>
@@ -380,7 +473,10 @@ footer strong {
             DomePrograms <span>For Developer</span>
         </div>
 
-        <a class="back-btn" href="/dsapps/developers/">
+        <a
+            class="back-button"
+            href="/dsapps/developers/"
+        >
             ← Contenuti
         </a>
 
@@ -390,421 +486,360 @@ footer strong {
 
 <main class="container">
 
+    <!-- HERO -->
+
     <section class="hero">
 
         <div class="badge">
             FERDOR DEVELOPER
         </div>
 
-        <h1>Fare Addon per Ferdor e Ferdor Beta</h1>
+        <h1>
+            Fare Addon per Ferdor e Ferdor Beta
+        </h1>
 
         <p class="subtitle">
-            Guida per sviluppatori per creare addon, utilizzare E++ 
-            e aggiungere logiche avanzate a Ferdor.
+            Guida passo-passo per creare, impacchettare e inviare
+            un'estensione per Ferdor.
         </p>
 
     </section>
 
 
+    <!-- INFO -->
+
     <div class="info">
-        <strong>📘 Guida per sviluppatori</strong><br>
-        Questa guida è dedicata agli sviluppatori che vogliono
-        creare addon per <strong>Ferdor</strong> e <strong>Ferdor Beta</strong>.
+
+        <strong>🧩 Guida per sviluppatori</strong>
+
+        <br>
+
+        Questa guida è dedicata agli sviluppatori di addon
+        per <strong>Ferdor</strong> e <strong>Ferdor Beta</strong>.
+
     </div>
 
 
+    <!-- PROCEDIMENTO -->
+
     <section class="section">
 
-        <h2>🧩 Introduzione</h2>
+        <h2>🚀 Procedimento</h2>
 
-        <p>
-            Gli addon permettono di estendere le funzionalità di Ferdor
-            aggiungendo nuove funzioni, automazioni e comportamenti.
-        </p>
 
-        <p>
-            Per creare logiche più avanzate puoi utilizzare
-            <strong>E++</strong>, il linguaggio utilizzato dagli addon
-            Ferdor.
-        </p>
+        <!-- STEP 1 -->
+
+        <div class="step">
+
+            <h3 class="step-title">
+
+                <span class="step-number">
+                    1
+                </span>
+
+                Crea la cartella
+
+            </h3>
+
+            <p>
+                Crea una cartella con il nome che vuoi,
+                ad esempio <code>my-extension</code>.
+            </p>
+
+            <p>
+                Ti consigliamo di utilizzare un nome corto,
+                semplice e memorabile: sarà il
+                <strong>nome in codice dell'estensione</strong>.
+            </p>
+
+        </div>
+
+
+        <!-- STEP 2 -->
+
+        <div class="step">
+
+            <h3 class="step-title">
+
+                <span class="step-number">
+                    2
+                </span>
+
+                Crea il file <code>INFORMATION</code>
+
+            </h3>
+
+            <p>
+                All'interno della cartella crea un file chiamato
+                <code>INFORMATION</code>.
+            </p>
+
+            <div class="code-wrapper">
+
+                <span class="code-label">
+                    INFORMATION
+                </span>
+
+                <button class="copy-btn">
+                    Copia
+                </button>
+
+<pre>meta {author {"tuonome"}; prod {"La Mia Estensione"};}
+build {prod.build {aa.numeroversione}}
+superusr {enabled {False}}
+setuptools {actived {False}}</pre>
+
+            </div>
+
+        </div>
+
+
+        <!-- STEP 3 -->
+
+        <div class="step">
+
+            <h3 class="step-title">
+
+                <span class="step-number">
+                    3
+                </span>
+
+                Crea il file <code>SETUP</code>
+
+            </h3>
+
+            <p>
+                Crea quindi il file <code>SETUP</code>.
+                Questo file contiene le informazioni necessarie
+                alla configurazione dell'addon.
+            </p>
+
+            <div class="code-wrapper">
+
+                <span class="code-label">
+                    SETUP
+                </span>
+
+                <button class="copy-btn">
+                    Copia
+                </button>
+
+<pre>file {
+    dir:{th.thisuserwithferdor + "my-extension.plu" #Sostituisci 'my-extension' con il nome in codice
+    }
+}</pre>
+
+            </div>
+
+        </div>
+
+
+        <!-- STEP 4 -->
+
+        <div class="step">
+
+            <h3 class="step-title">
+
+                <span class="step-number">
+                    4
+                </span>
+
+                Crea il file <code>ADDON</code>
+
+            </h3>
+
+            <p>
+                Il file <code>ADDON</code> contiene il binario dinamico
+                dell'estensione.
+            </p>
+
+            <div class="warning">
+
+                <strong>⚠️ Attenzione</strong>
+
+                <br>
+
+                Inserisci il contenuto binario fornito dalla
+                documentazione nel file <code>ADDON</code>.
+                
+            </div>
+
+            <div class="code-wrapper">
+
+                <span class="code-label">
+                    BINARY
+                </span>
+
+                <button class="copy-btn">
+                    Copia
+                </button>
+
+<pre>50 6C 67 8A F3 21 9C 4D 7B C2 D4 19 8E 55 3A C7 0F B2 6D 91
+A1 3F 77 C8 92 4B 0D E6 11 5A 9C 73 2E B4 F0 6A 88 12 4D AF 39 C1 7E 55 90 2B DC 61 08 F3 9A 47 5C E2 14 78 AB 6F 33 D0 9E 01 4A B7 C5 2D 88 F1 6C 90 3E 72 19 AD 5F C0 27 81 EA 44 68 B2 0F 95
+DA 23 7C 58 11 9F B6 2A E4 70 3B 8D 55 C1 06 AF 39 8B D2 14 7E 60 FA 21 95 3C 47 B8 0D 6A E1 2F 84 9D 33 C7 58 10 AB 6E 2C F4 71 09 D8 55 3A C1 EF 22 90 4B 7C 18 D3 A5 6F 39 80 B2 54 1E 68 CD 7A 11 93 5F E2 40 6C B8 2D A1 79 0F 33 D4 8E 56
+19 C7 2B 60 F5 84 3A 91 DE 08 77 4C B2 6F A9 15 C0 3D 88 21 6A 57 9E F4 0B D2 71 35 AC 68 19 E3 4F B9 2C 80 16 D5 73 AE 41 0F 9C 62 38 B7 E0 55 A2 6D 13 F8 4C 97 20 BE 5A 31 8D 64 0A F1 C3 7E
+8E 44 2A 91 B7 0C 5D E3 76 1F A9 38 C2 6B D0 54 19 87 3E F2 6D 0A B5 48 C9 21 7C E1 93 5A 6F B8 02 4D A7 39 85 CE 10 6B F4 2E 91 D8 57 3C A0 6E 11 F9 43 78 BC 25 D6 8A 0F 3D 72 99 14 E0 5B C7
+2D 88 F1 63 0B A4 79 35 CE 12 6F D8 54 91 3A B7 E2 0C 6D F5 48 23 9E 71 AC 0F 34 B9 65 D2 18 7A E4 50 2B 93 6C 1F A8 47 D5 0E 78 21 B3 9C 66 4A F0 1D 82 3E 57 AB 90 6D 24 C1 7F 38 55 E9 02
+71 3C D6 8F 20 A9 5B E4 18 63 C2 7D 91 4F B0 2A 8E 15 79 DC 34 6B A1 F8 52 0C 97 3E 6D B4 21 88 F3 5A 0E 69 17 C4 AD 32 90 7F E1 5C 26 B8 4D A3 10 6F 92 3B D7 58 0A C6 71 2E 85 4F B9 13 DC
+A1 3F 77 C8 92 4B 0D E6 11 5A 9C 73 2E B4 F0 6A 88 12 4D AF 39 C1 7E 55 90 2B DC 61 08 F3 9A 47 5C E2 14 78 AB 6F 33 D0 9E 01 4A B7 C5 2D 88 F1 6C 90 3E 72 19 AD 5F C0 27 81 EA 44 68 B2 0F 95
+DA 23 7C 58 11 9F B6 2A E4 70 3B 8D 55 C1 06 AF 39 8B D2 14 7E 60 FA 21 95 3C 47 B8 0D 6A E1 2F 84 9D 33 C7 58 10 AB 6E 2C F4 71 09 D8 55 3A C1 EF 22 90 4B 7C 18 D3 A5 6F 39 80 B2 54 1E 68 CD 7A 11 93 5F E2 40 6C B8 2D A1 79 0F 33 D4 8E 56
+19 C7 2B 60 F5 84 3A 91 DE 08 77 4C B2 6F A9 15 C0 3D 88 21 6A 57 9E F4 0B D2 71 35 AC 68 19 E3 4F B9 2C 80 16 D5 73 AE 41 0F 9C 62 38 B7 E0 55 A2 6D 13 F8 4C 97 20 BE 5A 31 8D 64 0A F1 C3 7E
+8E 44 2A 91 B7 0C 5D E3 76 1F A9 38 C2 6B D0 54 19 87 3E F2 6D 0A B5 48 C9 21 7C E1 93 5A 6F B8 02 4D A7 39 85 CE 10 6B F4 2E 91 D8 57 3C A0 6E 11 F9 43 78 BC 25 D6 8A 0F 3D 72 99 14 E0 5B C7
+2D 88 F1 63 0B A4 79 35 CE 12 6F D8 54 91 3A B7 E2 0C 6D F5 48 23 9E 71 AC 0F 34 B9 65 D2 18 7A E4 50 2B 93 6C 1F A8 47 D5 0E 78 21 B3 9C 66 4A F0 1D 82 3E 57 AB 90 6D 24 C1 7F 38 55 E9 02
+71 3C D6 8F 20 A9 5B E4 18 63 C2 7D 91 4F B0 2A 8E 15 79 DC 34 6B A1 F8 52 0C 97 3E 6D B4 21 88 F3 5A 0E 69 17 C4 AD 32 90 7F E1 5C 26 B8 4D A3 10 6F 92 3B D7 58 0A C6 71 2E 85 4F B9 13 DC
+A1 3F 77 C8 92 4B 0D E6 11 5A 9C 73 2E B4 F0 6A 88 12 4D AF 39 C1 7E 55 90 2B DC 61 08 F3 9A 47 5C E2 14 78 AB 6F 33 D0 9E 01 4A B7 C5 2D 88 F1 6C 90 3E 72 19 AD 5F C0 27 81 EA 44 68 B2 0F 95
+DA 23 7C 58 11 9F B6 2A E4 70 3B 8D 55 C1 06 AF 39 8B D2 14 7E 60 FA 21 95 3C 47 B8 0D 6A E1 2F 84 9D 33 C7 58 10 AB 6E 2C F4 71 09 D8 55 3A C1 EF 22 90 4B 7C 18 D3 A5 6F 39 80 B2 54 1E 68 CD 7A 11 93 5F E2 40 6C B8 2D A1 79 0F 33 D4 8E 56
+19 C7 2B 60 F5 84 3A 91 DE 08 77 4C B2 6F A9 15 C0 3D 88 21 6A 57 9E F4 0B D2 71 35 AC 68 19 E3 4F B9 2C 80 16 D5 73 AE 41 0F 9C 62 38 B7 E0 55 A2 6D 13 F8 4C 97 20 BE 5A 31 8D 64 0A F1 C3 7E
+8E 44 2A 91 B7 0C 5D E3 76 1F A9 38 C2 6B D0 54 19 87 3E F2 6D 0A B5 48 C9 21 7C E1 93 5A 6F B8 02 4D A7 39 85 CE 10 6B F4 2E 91 D8 57 3C A0 6E 11 F9 43 78 BC 25 D6 8A 0F 3D 72 99 14 E0 5B C7
+2D 88 F1 63 0B A4 79 35 CE 12 6F D8 54 91 3A B7 E2 0C 6D F5 48 23 9E 71 AC 0F 34 B9 65 D2 18 7A E4 50 2B 93 6C 1F A8 47 D5 0E 78 21 B3 9C 66 4A F0 1D 82 3E 57 AB 90 6D 24 C1 7F 38 55 E9 02
+71 3C D6 8F 20 A9 5B E4 18 63 C2 7D 91 4F B0 2A 8E 15 79 DC 34 6B A1 F8 52 0C 97 3E 6D B4 21 88 F3 5A 0E 69 17 C4 AD 32 90 7F E1 5C 26 B8 4D A3 10 6F 92 3B D7 58 0A C6 71 2E 85 4F B9 13 DC</pre>
+
+            </div>
+
+        </div>
+
+
+        <!-- STEP 5 -->
+
+        <div class="step">
+
+            <h3 class="step-title">
+
+                <span class="step-number">
+                    5
+                </span>
+
+                Impacchettazione
+
+            </h3>
+
+            <p>
+                Ora seleziona tutto il contenuto della cartella
+                utilizzando:
+            </p>
+
+            <ul>
+                <li><code>CTRL + A</code> su Windows/Linux</li>
+                <li><code>COMMAND + A</code> su macOS</li>
+            </ul>
+
+            <p>
+                Comprimi quindi i file in un archivio ZIP e
+                rinominalo utilizzando il nome in codice dell'estensione
+                con estensione <code>.plu</code>.
+            </p>
+
+            <div class="code-wrapper">
+
+                <span class="code-label">
+                    FILE
+                </span>
+
+                <button class="copy-btn">
+                    Copia
+                </button>
+
+<pre>nome-in-codice.plu</pre>
+
+            </div>
+
+        </div>
+
+
+        <!-- STEP 6 -->
+
+        <div class="step">
+
+            <h3 class="step-title">
+
+                <span class="step-number">
+                    6
+                </span>
+
+                Invia l'addon
+
+            </h3>
+
+            <p>
+                Quando hai completato l'addon, puoi inviarlo
+                tramite email.
+            </p>
+
+            <a
+                class="send-button"
+                href="mailto:dome.nigeco+ferdorext@gmail.com?subject=Estensione%20Ferdor:%20Nome"
+            >
+                ✉️ Invia estensione
+            </a>
+
+        </div>
 
     </section>
 
 
-    <section class="section">
+    <!-- CHECKLIST -->
 
-        <h2>⚡ Guida E++</h2>
+    <section class="section send-card">
 
-        <p>
-            <strong>E++</strong> è un linguaggio avanzato pensato
-            per gli addon di Ferdor.
-        </p>
+        <h2>✅ Prima dell'invio</h2>
 
-        <p>
-            I file E++ utilizzano l'estensione:
-            <code>ADDON-EPP</code>
-        </p>
-
-        <p>Con E++ puoi creare:</p>
+        <h3>📎 Ricorda</h3>
 
         <ul>
-            <li>⚙️ Automazioni</li>
-            <li>📦 Moduli</li>
-            <li>⚡ Eventi</li>
-            <li>🧠 Logiche interne</li>
-            <li>📁 Gestione dei file</li>
-            <li>🐞 Debug</li>
+            <li>Allega il file <code>.plu</code>.</li>
+            <li>Sostituisci <strong>"Nome"</strong> nell'oggetto dell'email.</li>
         </ul>
 
-        <p>
-            <a class="doc-link" href="how-to-e++.html">
-                📖 Guarda anche: Come programmare in E++
-            </a>
-        </p>
+
+        <h3>🛡️ Rispetta le regole</h3>
+
+        <ul>
+            <li>
+                Non creare contenuti pericolosi.
+            </li>
+
+            <li>
+                Gli addon che violano le regole non verranno pubblicati.
+            </li>
+        </ul>
+
+
+        <h3>⏱️ Tieni a mente</h3>
+
+        <ul>
+            <li>
+                La revisione potrebbe richiedere qualche ora o qualche giorno.
+            </li>
+        </ul>
 
     </section>
 
 
-    <section class="section">
+    <!-- FINAL INFO -->
 
-        <h2>🏗️ Struttura base</h2>
+    <div class="info">
 
-        <p>
-            Un file E++ può partire da una struttura simile a questa:
-        </p>
+        <strong>🚀 Fatto!</strong>
 
-        <div class="code-wrapper">
+        <br>
 
-            <span class="code-label">E++</span>
+        Dopo aver inviato l'estensione, attendi la revisione.
+        Se l'addon rispetta i requisiti, potrà essere aggiunto
+        agli addon disponibili per Ferdor.
 
-            <button class="copy-btn">
-                Copia
-            </button>
-
-<pre>\ E++ File.Name "base"
-\ File includemdl &lt;basestudio&gt;, &lt;eppinit&gt;
-
-&lt;eppinit&gt;.InitMdl[this]</pre>
-
-        </div>
-
-    </section>
-
-
-    <section class="section">
-
-        <h2>💻 Esempi</h2>
-
-        <!-- 1 -->
-
-        <div class="example">
-
-            <h3 class="example-title">
-                <span class="number">1</span>
-                Hello World
-            </h3>
-
-            <div class="code-wrapper">
-
-                <span class="code-label">E++</span>
-
-                <button class="copy-btn">Copia</button>
-
-<pre>\ E++ File.Name "hello"
-\ File includemdl &lt;basestudio&gt;, &lt;eppinit&gt;
-
-print "Hello"
-
-&lt;eppinit&gt;.InitMdl[this]</pre>
-
-            </div>
-
-        </div>
-
-
-        <!-- 2 -->
-
-        <div class="example">
-
-            <h3 class="example-title">
-                <span class="number">2</span>
-                Operazioni matematiche
-            </h3>
-
-            <div class="code-wrapper">
-
-                <span class="code-label">E++</span>
-
-                <button class="copy-btn">Copia</button>
-
-<pre>\ E++ File.Name "math"
-\ File includemdl &lt;basestudio&gt;, &lt;eppinit&gt;
-
-var a = 5
-var b = 3
-
-print a + b
-
-&lt;eppinit&gt;.InitMdl[this]</pre>
-
-            </div>
-
-        </div>
-
-
-        <!-- 3 -->
-
-        <div class="example">
-
-            <h3 class="example-title">
-                <span class="number">3</span>
-                Condizioni
-            </h3>
-
-            <div class="code-wrapper">
-
-                <span class="code-label">E++</span>
-
-                <button class="copy-btn">Copia</button>
-
-<pre>\ E++ File.Name "if"
-\ File includemdl &lt;basestudio&gt;, &lt;eppinit&gt;
-
-if 1 == 1 {
-    print "ok"
-}
-
-&lt;eppinit&gt;.InitMdl[this]</pre>
-
-            </div>
-
-        </div>
-
-
-        <!-- 4 -->
-
-        <div class="example">
-
-            <h3 class="example-title">
-                <span class="number">4</span>
-                Cicli
-            </h3>
-
-            <div class="code-wrapper">
-
-                <span class="code-label">E++</span>
-
-                <button class="copy-btn">Copia</button>
-
-<pre>\ E++ File.Name "loop"
-\ File includemdl &lt;basestudio&gt;, &lt;eppinit&gt;
-
-for i in 0..3 {
-    print i
-}
-
-&lt;eppinit&gt;.InitMdl[this]</pre>
-
-            </div>
-
-        </div>
-
-
-        <!-- 5 -->
-
-        <div class="example">
-
-            <h3 class="example-title">
-                <span class="number">5</span>
-                Funzioni
-            </h3>
-
-            <div class="code-wrapper">
-
-                <span class="code-label">E++</span>
-
-                <button class="copy-btn">Copia</button>
-
-<pre>\ E++ File.Name "func"
-\ File includemdl &lt;basestudio&gt;, &lt;eppinit&gt;
-
-func hi(n) {
-    print n
-}
-
-hi("Dev")
-
-&lt;eppinit&gt;.InitMdl[this]</pre>
-
-            </div>
-
-        </div>
-
-
-        <!-- 6 -->
-
-        <div class="example">
-
-            <h3 class="example-title">
-                <span class="number">6</span>
-                File
-            </h3>
-
-            <div class="code-wrapper">
-
-                <span class="code-label">E++</span>
-
-                <button class="copy-btn">Copia</button>
-
-<pre>\ E++ File.Name "file"
-\ File includemdl &lt;basestudio&gt;, &lt;eppinit&gt;
-
-file.create "a.txt"
-
-&lt;eppinit&gt;.InitMdl[this]</pre>
-
-            </div>
-
-        </div>
-
-
-        <!-- 7 -->
-
-        <div class="example">
-
-            <h3 class="example-title">
-                <span class="number">7</span>
-                Eventi
-            </h3>
-
-            <div class="code-wrapper">
-
-                <span class="code-label">E++</span>
-
-                <button class="copy-btn">Copia</button>
-
-<pre>\ E++ File.Name "event"
-\ File includemdl &lt;basestudio&gt;, &lt;eppinit&gt;
-
-event.start {
-    print "start"
-}
-
-&lt;eppinit&gt;.InitMdl[this]</pre>
-
-            </div>
-
-        </div>
-
-
-        <!-- 8 -->
-
-        <div class="example">
-
-            <h3 class="example-title">
-                <span class="number">8</span>
-                Moduli
-            </h3>
-
-            <div class="code-wrapper">
-
-                <span class="code-label">E++</span>
-
-                <button class="copy-btn">Copia</button>
-
-<pre>\ E++ File.Name "module"
-\ File includemdl &lt;basestudio&gt;, &lt;eppinit&gt;
-
-module.load "core"
-
-&lt;eppinit&gt;.InitMdl[this]</pre>
-
-            </div>
-
-        </div>
-
-
-        <!-- 9 -->
-
-        <div class="example">
-
-            <h3 class="example-title">
-                <span class="number">9</span>
-                Input
-            </h3>
-
-            <div class="code-wrapper">
-
-                <span class="code-label">E++</span>
-
-                <button class="copy-btn">Copia</button>
-
-<pre>\ E++ File.Name "input"
-\ File includemdl &lt;basestudio&gt;, &lt;eppinit&gt;
-
-var x = input "nome"
-
-print x
-
-&lt;eppinit&gt;.InitMdl[this]</pre>
-
-            </div>
-
-        </div>
-
-
-        <!-- 10 -->
-
-        <div class="example">
-
-            <h3 class="example-title">
-                <span class="number">10</span>
-                Debug
-            </h3>
-
-            <div class="code-wrapper">
-
-                <span class="code-label">E++</span>
-
-                <button class="copy-btn">Copia</button>
-
-<pre>\ E++ File.Name "debug"
-\ File includemdl &lt;basestudio&gt;, &lt;eppinit&gt;
-
-debug.log "ok"
-
-&lt;eppinit&gt;.InitMdl[this]</pre>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <section class="section">
-
-        <h2>🚀 Prossimi passi</h2>
-
-        <p>
-            Ora che conosci la struttura di base di E++, puoi
-            approfondire la creazione degli addon e imparare a
-            utilizzare le funzionalità avanzate di Ferdor.
-        </p>
-
-        <a class="doc-link" href="/dsapps/developers/Ferdor/how-to-plu">
-            🧩 Guida completa agli Addon
-        </a>
-
-    </section>
+    </div>
 
 </main>
 
 
 <footer>
+
     <strong>DomePrograms For Developer</strong>
+
     <br>
+
     Documentazione per sviluppatori Ferdor
+
 </footer>
 
 
@@ -821,14 +856,12 @@ document.querySelectorAll(".copy-btn").forEach(button => {
 
             await navigator.clipboard.writeText(code);
 
-            const oldText = button.innerText;
-
             button.innerText = "✓ Copiato!";
             button.classList.add("copied");
 
             setTimeout(() => {
 
-                button.innerText = oldText;
+                button.innerText = "Copia";
                 button.classList.remove("copied");
 
             }, 1800);
@@ -850,4 +883,4 @@ document.querySelectorAll(".copy-btn").forEach(button => {
 </script>
 
 </body>
-  </html>
+</html>
