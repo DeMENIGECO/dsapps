@@ -2,6 +2,11 @@
 
 ## 3
 
+<summary>3.5.0</summary>
+
+  - Avvisi di sicurezza nel renderizzamento di siti esterni
+</details>
+
 <details>
   <summary>3.4.4</summary>
 
