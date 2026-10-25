@@ -336,8 +336,6 @@ function isTrustedHost(hostname, trusted) {
 }
 
 async function verifySite(url) {
-
-async function verifySite(url) {
     try {
         // Cerca trusted.json nella stessa directory dell'HTML
         const trustedUrl = new URL(
@@ -373,6 +371,7 @@ async function verifySite(url) {
         return null;
     }
 }
+
 
 async function init() {
     if (!app || !app.trim()) {
