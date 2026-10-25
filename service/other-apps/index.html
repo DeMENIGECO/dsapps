@@ -336,30 +336,40 @@ function isTrustedHost(hostname, trusted) {
 }
 
 async function verifySite(url) {
+
+async function verifySite(url) {
     try {
-        // trusted.json deve trovarsi nella radice del sito esterno.
-        const trustedUrl = new URL("/trusted.json", url.origin);
+        // Cerca trusted.json nella stessa directory dell'HTML
+        const trustedUrl = new URL(
+            "trusted.json",
+            window.location.href
+        );
 
         const response = await fetch(trustedUrl.href, {
-            method: "GET",
-            mode: "cors",
-            cache: "no-store",
-            redirect: "error",
-            signal: AbortSignal.timeout(5000)
+            cache: "no-store"
         });
 
         if (!response.ok) {
-            throw new Error("File non disponibile");
+            throw new Error("trusted.json non trovato");
         }
 
         const data = await response.json();
 
-        if (!data || !Array.isArray(data.trusted)) {
-            throw new Error("Formato JSON non valido");
+        if (!Array.isArray(data.trusted)) {
+            throw new Error("Formato trusted.json non valido");
         }
 
-        return isTrustedHost(url.hostname, data.trusted);
-    } catch {
+        const hostname = url.hostname
+            .toLowerCase()
+            .replace(/\.$/, "");
+
+        return data.trusted.some(domain =>
+            typeof domain === "string" &&
+            domain.trim().toLowerCase().replace(/\.$/, "")
+                === hostname
+        );
+    } catch (error) {
+        console.error("Errore verifica:", error);
         return null;
     }
 }
