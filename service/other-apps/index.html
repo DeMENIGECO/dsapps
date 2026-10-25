@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>App di terze parti - DomePrograms</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #111827;
+    color: white;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    text-align: center;
+    padding: 35px 20px;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+main {
+    width: calc(100% - 32px);
+    max-width: 650px;
+    margin: 30px auto;
+    flex: 1;
+}
+
+.card {
+    background: #1f2937;
+    padding: 30px;
+    border-radius: 16px;
+    border: 1px solid #374151;
+    box-shadow: 0 10px 30px #00000020;
+}
+
+.icon {
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    border-radius: 16px;
+    background: #374151;
+    font-size: 32px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 27px;
+    margin: 0 0 24px;
+}
+
+.description {
+    color: #cbd5e1;
+    line-height: 1.7;
+    text-align: center;
+    font-size: 15px;
+}
+
+.app-name {
+    color: #60a5fa;
+    overflow-wrap: anywhere;
+}
+
+.info {
+    background: #111827;
+    padding: 16px;
+    border-radius: 10px;
+    margin-top: 24px;
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid #374151;
+}
+
+.info-row:last-child {
+    border-bottom: none;
+}
+
+.info-label {
+    color: #9ca3af;
+    flex-shrink: 0;
+}
+
+.info-value {
+    text-align: right;
+    overflow-wrap: anywhere;
+}
+
+#domain {
+    color: #93c5fd;
+}
+
+.status {
+    font-weight: bold;
+}
+
+.status.yes {
+    color: #4ade80;
+}
+
+.status.no {
+    color: #f87171;
+}
+
+.status.unknown {
+    color: #fbbf24;
+}
+
+.warning {
+    margin-top: 20px;
+    padding: 14px;
+    border-radius: 10px;
+    background: #422006;
+    color: #fde68a;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.button-main {
+    display: block;
+    width: 100%;
+    background: #2563eb;
+    color: white;
+    padding: 14px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    text-align: center;
+    transition: 0.2s;
+    cursor: pointer;
+    border: none;
+    font-size: 16px;
+    margin-top: 24px;
+}
+
+.button-main:hover {
+    background: #1e40af;
+}
+
+.button-secondary {
+    display: block;
+    width: 100%;
+    background: #374151;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    text-align: center;
+    margin-top: 12px;
+    border: 1px solid #4b5563;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.button-secondary:hover {
+    background: #4b5563;
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+footer {
+    text-align: center;
+    padding: 25px;
+    font-size: 14px;
+    color: #9ca3af;
+}
+
+@media (max-width: 480px) {
+    header {
+        font-size: 28px;
+        padding: 28px 15px;
+    }
+
+    .card {
+        padding: 22px 17px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>DomePrograms</header>
+
+<main>
+    <div class="card">
+
+        <div class="icon">🌐</div>
+
+        <h1>App di terze parti</h1>
+
+        <p class="description">
+            Quest'app sembra essere non fornita da DomePrograms internamente.
+            Verrai renderizzato in un sito esterno per l'app
+            <strong class="app-name" id="appName">...</strong>.
+        </p>
+
+        <div class="info">
+
+            <div class="info-row">
+                <span class="info-label">📦 App</span>
+                <span class="info-value" id="appValue">Caricamento...</span>
+            </div>
+
+            <div class="info-row">
+                <span class="info-label">🌍 Sito web</span>
+                <span class="info-value" id="domain">Caricamento...</span>
+            </div>
+
+            <div class="info-row">
+                <span class="info-label">🛡️ Verificato</span>
+                <span class="info-value status unknown" id="verified">
+                    Controllo in corso...
+                </span>
+            </div>
+
+        </div>
+
+        <div class="warning">
+            ⚠️ <strong>Attenzione:</strong> stai per visitare un sito esterno.
+            DomePrograms non controlla necessariamente i contenuti o la
+            sicurezza di questo sito. Controlla l'indirizzo prima di continuare.
+            Anche un sito verificato non è garantito come sicuro.
+        </div>
+
+        <button class="button-main" id="continueButton" disabled>
+            ⏳ Verifica in corso...
+        </button>
+
+        <button class="button-secondary" id="backButton">
+            ← Torna indietro
+        </button>
+
+    </div>
+</main>
+
+<footer>
+    DomePrograms · App di terze parti
+</footer>
+
+<script>
+"use strict";
+
+const params = new URLSearchParams(window.location.search);
+
+const app = params.get("app");
+const site = params.get("site");
+
+const appName = document.getElementById("appName");
+const appValue = document.getElementById("appValue");
+const domainElement = document.getElementById("domain");
+const verifiedElement = document.getElementById("verified");
+const continueButton = document.getElementById("continueButton");
+const backButton = document.getElementById("backButton");
+
+let destination = null;
+
+// Controlla che l'indirizzo sia valido e utilizzi HTTPS.
+function parseSite(value) {
+    if (!value) return null;
+
+    try {
+        const url = new URL(value);
+
+        if (url.protocol !== "https:" && url.protocol !== "http:") {
+            return null;
+        }
+
+        if (!url.hostname.includes(".")) {
+            return null;
+        }
+
+        if (url.username || url.password) {
+            return null;
+        }
+
+        // Non consentire indirizzi locali o IP privati.
+        const host = url.hostname.toLowerCase();
+
+        if (
+            host === "localhost" ||
+            host.endsWith(".localhost") ||
+            host.endsWith(".local") ||
+            host === "127.0.0.1" ||
+            host === "::1" ||
+            /^10\./.test(host) ||
+            /^192\.168\./.test(host) ||
+            /^169\.254\./.test(host) ||
+            /^172\.(1[6-9]|2\d|3[01])\./.test(host)
+        ) {
+            return null;
+        }
+
+        return url;
+    } catch {
+        return null;
+    }
+}
+
+// Confronta i domini esattamente, senza accettare
+// domini ingannevoli come tuosito.com.falso.it.
+function isTrustedHost(hostname, trusted) {
+    const host = hostname.toLowerCase().replace(/\.$/, "");
+
+    return trusted.some(item => {
+        if (typeof item !== "string") return false;
+
+        const trustedHost = item.toLowerCase().trim().replace(/\.$/, "");
+
+        return trustedHost !== "" && host === trustedHost;
+    });
+}
+
+async function verifySite(url) {
+    try {
+        // trusted.json deve trovarsi nella radice del sito esterno.
+        const trustedUrl = new URL("/trusted.json", url.origin);
+
+        const response = await fetch(trustedUrl.href, {
+            method: "GET",
+            mode: "cors",
+            cache: "no-store",
+            redirect: "error",
+            signal: AbortSignal.timeout(5000)
+        });
+
+        if (!response.ok) {
+            throw new Error("File non disponibile");
+        }
+
+        const data = await response.json();
+
+        if (!data || !Array.isArray(data.trusted)) {
+            throw new Error("Formato JSON non valido");
+        }
+
+        return isTrustedHost(url.hostname, data.trusted);
+    } catch {
+        return null;
+    }
+}
+
+async function init() {
+    if (!app || !app.trim()) {
+        appName.textContent = "Non specificata";
+        appValue.textContent = "Parametro mancante";
+    } else {
+        appName.textContent = app;
+        appValue.textContent = app;
+    }
+
+    destination = parseSite(site);
+
+    if (!destination) {
+        domainElement.textContent = "Indirizzo non valido";
+        verifiedElement.textContent = "Impossibile verificare";
+        verifiedElement.className = "info-value status unknown";
+        continueButton.textContent = "Indirizzo non valido";
+        continueButton.disabled = true;
+        return;
+    }
+
+    domainElement.textContent = destination.hostname;
+
+    verifiedElement.textContent = "Controllo in corso...";
+    verifiedElement.className = "info-value status unknown";
+
+    const result = await verifySite(destination);
+
+    if (result === true) {
+        verifiedElement.textContent = "Sì ✓";
+        verifiedElement.className = "info-value status yes";
+    } else if (result === false) {
+        verifiedElement.textContent = "No ✗";
+        verifiedElement.className = "info-value status no";
+    } else {
+        verifiedElement.textContent = "Impossibile verificare";
+        verifiedElement.className = "info-value status unknown";
+    }
+
+    continueButton.disabled = false;
+    continueButton.textContent = "🌐 Continua verso l'app";
+}
+
+continueButton.addEventListener("click", () => {
+    if (destination) {
+        window.location.href = destination.href;
+    }
+});
+
+backButton.addEventListener("click", () => {
+    if (window.history.length > 1) {
+        window.history.back();
+    } else {
+        window.location.href = "/";
+    }
+});
+
+init();
+</script>
+
+</body>
+</html>
